@@ -1,5 +1,8 @@
 import React from 'react';
-import ItemDetail from '../items/item_detail';
+import Item from '../items/item';
+import itemDetailContainer from '../items/item_detail_container'
+import {Route} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class PokemonDetail extends React.Component {
     componentDidMount() {
@@ -11,17 +14,18 @@ class PokemonDetail extends React.Component {
     }
 
     render() {
-        debugger
+
         return <div>
             <h2>{this.props.pokemon.name}</h2>
             <h2>{this.props.pokemon.name}'s Items</h2>
             <ul>
                 {this.props.items.map(item => {
                     return (
-                        <ItemDetail item={item} key={`${item.id}/${item.name}`}/>
+                        <Item pokemonId={this.props.pokemon.id} item={item} key={`${item.id}/${item.name}`}/>
                     )
                 })}
             </ul>
+            <Route path="/pokemon/:pokemonId/items/:itemId" component={itemDetailContainer}/>
         </div>
     }
 }

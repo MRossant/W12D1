@@ -1,12 +1,13 @@
 import {connect} from 'react-redux';
 import { requestSinglePokemon } from '../../actions/pokemon_actions';
 import PokemonDetail from './pokemon_detail'
-import { selectPokemonMovesNames } from '../../reducers/selectors';
+import { selectPokemonMovesNames, selectPokemonItems } from '../../reducers/selectors';
 
 const mSTP = (state, ownProps) => {
     return {
         pokemon: state.entities.pokemon[ownProps.match.params.pokemonId],
-        moves: selectPokemonMovesNames
+        moves: selectPokemonMovesNames(state),
+        items: selectPokemonItems(state)
     }
 }
 

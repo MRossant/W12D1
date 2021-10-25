@@ -1,4 +1,5 @@
 import React from 'react';
+import ItemDetail from '../items/item_detail';
 
 class PokemonDetail extends React.Component {
     componentDidMount() {
@@ -10,8 +11,17 @@ class PokemonDetail extends React.Component {
     }
 
     render() {
+        debugger
         return <div>
             <h2>{this.props.pokemon.name}</h2>
+            <h2>{this.props.pokemon.name}'s Items</h2>
+            <ul>
+                {this.props.items.map(item => {
+                    return (
+                        <ItemDetail item={item} key={`${item.id}/${item.name}`}/>
+                    )
+                })}
+            </ul>
         </div>
     }
 }

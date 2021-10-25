@@ -8,4 +8,8 @@ export const selectPokemonMovesNames = (state) => {
     return el.name
   })
 }
+
+export const selectPokemonItems = state => {
+  return Object.values(state.entities.items)
+}
   
